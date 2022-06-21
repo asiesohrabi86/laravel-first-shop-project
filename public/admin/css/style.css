@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'vazir';
+    src: url('../fonts/Vazir-Bold-FD-WOL.eot');
+    src: url('../fonts/Vazir-Bold-FD-WOL.ttf');
+    src: url('../fonts/Vazir-Bold-FD-WOL.woff');
+    src: url('../fonts/Vazir-Bold-FD-WOL.woff2');
+}
+
+body
+{
+    font-family: 'vazir';
+}
+
+.sefareshat
+{
+    display: none;
+    background-color: blue;
+    padding: 5px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.nav-link:hover .sefareshat
+{
+    display: block;
+}
