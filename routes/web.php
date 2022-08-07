@@ -3,12 +3,15 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController as ControllersProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -57,14 +60,38 @@ Route::prefix('/panel')->middleware('checkuser')->group(function(){
     Route::resource('/categories',CategoryController::class);
     Route::resource('/comments',CommentController::class)->only(['index','update','destroy']);
     Route::get('/comments/unapproved',[CommentController::class,'unapproved'])->name('unapproved.comment');
+    Route::resource('/orders',OrderController::class);
 
 });
 
-Route::post('/cart/add/{product}' , [CartController::class , 'addToCart'])->name('cart.add');
 
-Route::get('cart',[CartController::class,'cart'])->name('cart');
+// cart routes
+Route::prefix('/cart')->group(function(){
+    Route::post('/add/{product}' , [CartController::class , 'addToCart'])->name('cart.add');
 
-Route::patch('/cart/quantity/change',[CartController::class,'quantityChange']);
+    Route::get('/',[CartController::class,'cart'])->name('cart');
 
-Route::delete('cart/delete/{cart}',[CartController::class,'delete'])->name('cart.destroy');
+    Route::patch('/quantity/change',[CartController::class,'quantityChange']);
 
+    Route::delete('delete/{cart}',[CartController::class,'delete'])->name('cart.destroy');
+});
+
+
+Route::post('/payment',[PaymentController::class,'payment'])->name('cart.payment')->middleware('auth');
+
+Route::get('/payment/callback',[PaymentController::class,'callback'])->name('payment.callback');
+
+
+// profile routes
+Route::prefix('/profile')->middleware('auth')->group(function(){
+    Route::get('/' , [ProfileController::class , 'index'])->name('profile');
+
+    Route::get('/edit/{user}' ,[ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/edit/{user}' ,[ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('/orders',[ProfileController::class,'order'])->name('profile.orders');
+
+    Route::get('/orders/{order}',[ProfileController::class,'showDetails'])->name('order.details');
+
+    Route::get('/orders/{order}/payment',[ProfileController::class,'payment'])->name('order.payment');
+});

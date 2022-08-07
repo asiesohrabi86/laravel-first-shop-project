@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Order;
 
 class Product extends Model
 {
@@ -43,5 +44,10 @@ class Product extends Model
     public function comment()
     {
         return $this->morphMany(Comment::class , 'commentable');
+    }
+
+    public function order()
+    {
+        return $this->belongsToMany(Order::class);
     }
 }

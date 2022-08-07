@@ -26,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        alert()->success('شما وارد سایت شدید');
         return view('home');
     }
 

@@ -23,6 +23,7 @@
     <link href="{{asset('css/bootstrap-rtl.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/all.min.css')}}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
     <div id="app">
@@ -36,8 +37,15 @@
     <!-- Scripts -->
 
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    @include('sweet::alert')
+
     <script src="{{ asset('js/all.min.js') }}"></script>
+    
+
+    
 
     @yield('script')
     
@@ -56,6 +64,6 @@
 
 </script>
 
- 
+
 </body>
 </html>

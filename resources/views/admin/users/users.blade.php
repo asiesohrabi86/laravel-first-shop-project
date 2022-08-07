@@ -44,7 +44,7 @@
                                                 <form method="POST" action="{{route('users.destroy',$user->id)}}">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-danger">حذف</a>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('آیا از حذف کاربر اطمینان دارید؟')">حذف</a>
                                                 </form>
                                                    
                                              </td>

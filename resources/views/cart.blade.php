@@ -2,7 +2,7 @@
 
 @section('script')
 <script>
-    function changeQuantity(event, id , cartName = 'default') {
+    function changeQuantity(event, id , cartName = 'true') {
         //
         $.ajaxSetup({
             headers : {
@@ -56,12 +56,12 @@
                 <td>
                     <select onchange="changeQuantity(event,'{{$cart['id']}}' , 'cart-shop')" id="" class="form-control text-center">
                         @foreach (range(1,$product->inventory) as $item)
-                         <option value="{{$item}}" {{$cart['quantity']==$item ? 'selected' : ''}}>{{$item}}</option>
+                         <option value="{{$item}}" {{$cart['quantity'] == $item ? 'selected' : ''}}>{{$item}}</option>
                         @endforeach
                         
                     </select>
                 </td>
-                <td>{{$product->price * $cart['quantity'] }}</td>
+                <td>{{$cartTotal=$product->price * $cart['quantity'] }}</td>
                 <td>
                     <form action="{{route('cart.destroy',$cart['id'])}}" method="POST" id="delete-cart-{{$product->id}}">
                     @csrf
@@ -86,6 +86,13 @@
 
         <p>قیمت کل: {{$totalPrice}}</p>
 
+    </div>
+
+    <div class="">
+        <form action="{{route('cart.payment')}}" method="post" id="cart-payment">
+            @csrf
+        </form>
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('cart-payment').submit();">پرداخت</button>
     </div>
 </div>
 @endsection

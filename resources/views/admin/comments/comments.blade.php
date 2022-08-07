@@ -42,7 +42,7 @@
                                             <form method="POST" action="{{route('comments.destroy',$comment->id)}}">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-danger">حذف</a>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('آیا از حذف نظر اطمینان دارید؟')">حذف</a>
                                             </form>
                                         
                                     </td>

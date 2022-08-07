@@ -71,5 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        alert()->success('شما وارد سایت شدید');
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Product;
 use App\Models\Comment;
+use App\Models\Order;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -61,5 +62,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Comment::class , 'user_id' , 'id');
     }
 
+    public function order()
+    {
+        return $this->hasMany(Order::class,'user_id','id');
+    }
 
 }

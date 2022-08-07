@@ -46,7 +46,7 @@
                                         <form method="POST" action="{{route('categories.destroy',$category->id)}}">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-danger col-lg-4">حذف</a>
+                                            <button type="submit" class="btn btn-danger col-lg-4" onclick="return confirm('آیا از حذف دسته اطمینان دارید؟')">حذف</a>
                                         </form>
                                     </div>
                                     

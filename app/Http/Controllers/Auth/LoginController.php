@@ -58,5 +58,7 @@ class LoginController extends Controller
         [
             'g-recaptcha-response.required'=>'لطفا روی من ربات نیستم کلیک کنید',
         ]);
+
+        alert()->success('شما وارد سایت شدید');
     }
 }

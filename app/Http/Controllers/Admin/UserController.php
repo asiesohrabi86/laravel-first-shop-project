@@ -100,7 +100,7 @@ class UserController extends Controller
         ]);
 
 
-        if(! is_null(request('password')))
+        if(! is_null($request('password')))
         {
             $request->validate([
                 'password'=>['required','string','min:8','confirmed'],

@@ -31,10 +31,8 @@ class CartController extends Controller
         {
 
             $cart->put([
-
-                'quantity'=> 1,
-                'price'=> $product->price,
-                ],
+                 'quantity'=> 1,
+                ] ,
 
             $product
             );
@@ -48,9 +46,9 @@ class CartController extends Controller
         $data=$request->validate([
             'quantity'=>'required',
             'id'=>'required',
-
+            'cart'=>'required',
         ]);
-        return $data;
+        // return $data;
 
         $cart=Cart::instance($data['cart']);
 

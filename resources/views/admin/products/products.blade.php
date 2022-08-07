@@ -48,13 +48,13 @@
  
                                      <td class="d-flex pb-4">
                                         <div class="col-lg-3">
-                                            <a href="{{route('products.edit', $product->id)}}" class="btn btn-success" style="margin-left:5px">ویرایش</a>
+                                            <a href="{{route('products.edit', $product->id)}}" class="btn btn-success btn-sm" style="margin-left:5px">ویرایش</a>
                                         </div>
                                         <div class="col-lg-6">
                                             <form method="POST" action="{{route('products.destroy',$product->id)}}">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-danger col-lg-4">حذف</a>
+                                                <button type="submit" class="btn btn-danger col-lg-6 btn-sm" onclick="return confirm('آیا از حذف محصول اطمینان دارید؟')">حذف</a>
                                             </form>
                                         </div>
                                         
