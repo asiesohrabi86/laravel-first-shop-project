@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::where('status',request('type'))->latest()->paginate(20);
+        return view('admin.orders.order',compact('orders'));
     }
 
     /**
@@ -44,20 +46,26 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        $products = $order->product()->paginate(20);
+        return view('admin.orders.details',compact('products'));
     }
 
+    public function payments(Order $order)
+    {
+        $payments = $order->payment()->latest()->paginate(20);
+        return view('admin.orders.payments',compact('payments'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        //
+        return view('admin.orders.edit',compact('order'));
     }
 
     /**
@@ -67,9 +75,13 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-        //
+        // $request->validate([
+
+        // ]);
+        $order->update($request->all());
+        return redirect(route('orders.index'));
     }
 
     /**
@@ -78,8 +90,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return back();
     }
 }

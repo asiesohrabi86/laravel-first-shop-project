@@ -63,6 +63,10 @@
                             <a href="{{route('panel')}}" class="dropdown-item">پنل مدیریت</a>
                             @endif
                         
+                            <a class="dropdown-item" href="{{ route('profile') }}">
+                              {{ __('پروفایل کاربری') }}
+                            </a>
+
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

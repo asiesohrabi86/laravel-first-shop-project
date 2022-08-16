@@ -1,4 +1,4 @@
-@extends('profile.main')
+@extends('profile.layouts.main')
 @section('main')
 <div class="col-md-8">
   <form action="{{route('profile.update',auth()->user()->id)}}" method="post" class="bg-light">

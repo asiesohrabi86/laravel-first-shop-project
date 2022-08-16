@@ -61,6 +61,7 @@ Route::prefix('/panel')->middleware('checkuser')->group(function(){
     Route::resource('/comments',CommentController::class)->only(['index','update','destroy']);
     Route::get('/comments/unapproved',[CommentController::class,'unapproved'])->name('unapproved.comment');
     Route::resource('/orders',OrderController::class);
+    Route::get('/orders/{order}/payments',[OrderController::class,'payments'])->name('orders.payments');
 
 });
 

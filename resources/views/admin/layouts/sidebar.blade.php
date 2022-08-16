@@ -32,17 +32,46 @@
               محصولات
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('comments.index')}}" class="nav-link">
-              <i class='far fa-comments' aria-hidden="true"></i>
-              نظرات
-            </a>
+          <li class="nav-item dropdown">
+              <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                <i class='far fa-comments' aria-hidden="true"></i>
+                نظرات
+              </a>
+              <div class="dropdown-menu text-end">
+                <a href="{{route('comments.index')}}" class="dropdown-item"> 
+                  نظرات تاییدشده
+                </a>
+                <a href="{{route('unapproved.comment')}}" class="dropdown-item"> 
+                 نظرات تاییدنشده
+                </a>
+              </div> 
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <i class='fas fa-shopping-cart' aria-hidden="true"></i>
                 سفارشات 
             </a>
+            <div class="dropdown-menu text-end">
+              <a href="{{route('orders.index',['type'=>'unpaid'])}}" class="dropdown-item">پرداخت نشده
+              {{\App\Models\Order::whereStatus('unpaid')->count()}}
+              </a>
+              <a href="{{route('orders.index',['type' => 'paid'])}}" class="dropdown-item">پرداخت شده
+              {{\App\Models\Order::whereStatus('paid')->count()}}
+              </a>
+              <a href="{{route('orders.index',['type' => 'preparation'])}}" class="dropdown-item">درحال پردازش
+                {{\App\Models\Order::whereStatus('preparation')->count()}}
+                </a>
+              <a href="{{route('orders.index',['type' => 'post'])}}" class="dropdown-item">ارسال شده
+                {{\App\Models\Order::whereStatus('post')->count()}}
+              </a>
+              <a href="{{route('orders.index',['type' => 'recieved'])}}" class="dropdown-item">دریافت شده 
+                {{\App\Models\Order::whereStatus('recieved')->count()}}
+              </a>
+              <a href="{{route('orders.index',['type' => 'cancled'])}}" class="dropdown-item">کنسل شده
+                {{\App\Models\Order::whereStatus('cancled')->count()}}
+              </a>
+              
+            </div>
           </li>
         </ul>
 
