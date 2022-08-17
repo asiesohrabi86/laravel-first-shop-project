@@ -31,9 +31,9 @@
 
 
   <div class="w-100 slider container-fluid">
-    <div class="text-slider">
+    {{-- <div class="text-slider">
       <h2>فروشگاه اینترنتی رای</h2>
       <p>برای شرکت در قرعه کشی...</p>
-    </div>
+    </div> --}}
       
   </div>

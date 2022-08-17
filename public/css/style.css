@@ -25,7 +25,7 @@ body
 
 .menu
 {
-    margin-right: 23%;  
+    margin-right: 28%;  
 }
 
 .icon , .icon2
@@ -48,21 +48,21 @@ body
     /* filter: blur(2px); */
     /* background-color: crimson; */
     /* margin-top: 112px; */
-    padding-top: 120px;
+    /* padding-top: 120px; */
 }
 
 .text-slider
 {
     position: absolute;
     left: 40%;
-    top: 53%;
+    top: 50%;
 }
 
-.slider p
+/* .slider p
 {
     padding-top: 20px;
 
-}
+} */
 
 .icon1
 {
@@ -85,6 +85,11 @@ a
     h2
     {
         margin-top: 170px;
+    }
+    .text-slider
+    {
+        top:190px;
+        left:105px
     }
 
     

@@ -1,16 +1,17 @@
 <header>
-    <div class="top bg-light text-center container-fluid fixed-top">
+    <div class="top bg-light text-center container-fluid">
         <div class="row">
             <div class="col-lg-4"></div>
             <div class="col-lg-4 title">
-                <p class="p-2 text-center">shop</p>
+                <p class="p-2 text-center">ｓｈｏｐ</p>
             </div>
 
             <div class="col-lg-4">
-                <form class="d-flex col-lg-8 search pt-2" action="/search">
+                <form class="d-flex col-lg-7 search pt-2" action="/search">
                     <input class="form-control me-2" type="search" placeholder="جستجو کنید" aria-label="Search" name="search" value="{{request()->search ?? ''}}">
                     
-                    <button class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
                   </form>
             </div>
             
@@ -19,11 +20,13 @@
        
     
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid tmenu">
-        <div class="container-fluid">
-          <i class="fab fa-whatsapp icon" aria-hidden="true"></i>
-          <i class="fab fa-instagram icon" aria-hidden="true"></i>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="d-flex align-items-center">
+    <i class="fab fa-whatsapp icon" aria-hidden="true"></i>
+    <i class="fab fa-instagram icon" aria-hidden="true"></i>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+        
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse menu" id="navbarNav">
@@ -82,7 +85,8 @@
               
             </ul>
           </div>
-          <div class="">
+        </nav>
+          <div class="col-lg-1">
             <i class="fa fa-shopping-cart icon2" aria-hidden="true"></i>
 
             <a type="button" href="{{route('login')}}" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="ورود">
@@ -93,7 +97,7 @@
             </a> --}}
           </div>
         </div>
-      </nav>
+     
     </div>
       
 </header>

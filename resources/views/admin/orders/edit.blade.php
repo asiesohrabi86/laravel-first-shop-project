@@ -7,7 +7,8 @@
                 <div class="col-lg-9">
                     <section class="panel">
                         <header class="panel-heading">
-                        فرم ویرایش سفارش
+                        فرم ویرایش سفارش مربوط به کاربر
+                        {{$order->user->name}}
                      
                         </header>
                         <div class="panel-body">
@@ -15,38 +16,8 @@
                                  @csrf
                                  @method('put')
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">نام کاربر:</label>
-                                    <input type="text" class="form-control @error('name') is-invalid' @enderror" id="exampleInputEmail1" placeholder="نام محصول را وارد نمایید" name="name" value="{{$order->user->name}}">
-    
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{$message}}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <label for="exampleInputEmail1">هزینه سفارش</label>
-                                    <input type="text" class="form-control @error('slug') is-invalid' @enderror" id="exampleInputEmail1" placeholder="" name="slug" >
-    
-                                    @error('slug')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{$message}}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">توضیحات:</label>
-                                    <textarea type="text" class="form-control @error('description') is-invalid' @enderror" id="editor-id" name="description">{!!$product->description!!}</textarea>
-    
-                                    @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{$message}}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">قیمت محصول :</label>
-                                    <input type="text" class="form-control @error('price') is-inalid' @enderror" id="exampleInputPassword1" placeholder="قیمت محصول را وارد نمایید" name="price" value="{{$product->price}}">
+                                    <input type="text" class="form-control @error('price') is-invalid' @enderror" id="exampleInputEmail1" name="price" value="{{$order->price}}">
     
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
@@ -54,36 +25,28 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">موجودی محصول :</label>
-                                    <input type="text" class="form-control @error('inventory') is-inalid' @enderror" id="exampleInputPassword1" placeholder="موجودی محصول را وارد نمایید" name="inventory" value="{{$product->inventory}}">
-
-                                    @error('inventory')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{$message}}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                
-                                <div class="form-group mt-2" style="display: flex">
-                                    <input type="text" id="image_label" class="form-control" name="image"
-                                           aria-label="Image" aria-describedby="button-image" value="{{$product->image}}">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-image">انتخاب</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="select-group">
-                                    <label for="exampleSelect">انتخاب دسته بندی</label>
-                                    <select name="categories[]" id="exampleSelect" class="form-control @error('categories') 'is-invalid' @enderror" multiple>
-                                    
-                                        @foreach (App\Models\Category::all() as $category)
-                                            <option value="{{$category->id}}" {{in_array($category->id,$product->category()->pluck('id')->toArray()) ? 'selected' : '' }}>{{$category->name}}</option>      
-                                        @endforeach
+                                    <label for="exampleInputEmail1">وضعیت سفارش</label>
+                                    <select class="form-control @error('status') is-invalid' @enderror" id="exampleInputEmail1" placeholder="" name="status">
+                                        <option value="unpaid">پرداخت نشده</option>
+                                        <option value="paid">پرداخت شده</option>
+                                        <option value="preparation">در حال آماده سازی</option>
+                                        <option value="post">ارسال شده</option>
+                                        <option value="recieved">دریافت شده</option>
+                                        <option value="cancled">کنسل شده</option>
                                     </select>
-
-                                    @error('categories')
+    
+                                    @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">شماره پیگیری پستی</label>
+                                    <input type="text" class="form-control @error('tracking_serial') is-invalid' @enderror" name="tracking_serial" value="{{$order->tracking_serial ?? 'هنوز ثبت نشده'}}">
+    
+                                    @error('tracking_serial')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
                                         </span>
@@ -91,7 +54,7 @@
                                 </div>
                                 
                                 
-                                <button type="submit" class="btn btn-info" name="addproduct">ویرایش</button>
+                                <button type="submit" class="btn btn-info">ویرایش</button>
                                 <button class="btn btn-default" >لغو</button>
                             </form>
             

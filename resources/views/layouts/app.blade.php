@@ -29,7 +29,7 @@
     <div id="app">
        @include('layouts.navbar')
        
-        <main style="margin-top:120px">
+        <main>
             @yield('content')
         </main>
         @include('layouts.footer')

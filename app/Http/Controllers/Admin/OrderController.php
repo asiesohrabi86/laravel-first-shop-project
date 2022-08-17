@@ -77,11 +77,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        // $request->validate([
-
-        // ]);
+        $request->validate([
+            'price' => 'required',
+            'status' => 'required',
+            'tracking_serial' => 'required',
+        ]);
         $order->update($request->all());
-        return redirect(route('orders.index'));
+        return redirect(route('orders.index',['type' => 'unpaid']));
     }
 
     /**

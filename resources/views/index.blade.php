@@ -76,11 +76,11 @@
   <div class="col-lg-12 container-fluid text-center">
     <h4 class="bg-light shomiz">{{$category->name}}</h4>
     <div class="col-lg-12 bg-light">
-      <div class="row">
+      <div class="row radif">
         @foreach ($category->product as $product)
           <div class="col-lg-3 ">
             <div class="card" style="width: 18rem;">
-              <a href="{{route('singleproduct',$product->slug)}}"><img src="{{$product->image}}" class="card-img-top" alt="عکس شومیز" height="250px" width="250px"></a>
+              <a href="{{route('singleproduct',$product->slug)}}"><img src="{{$product->image}}" class="card-img-top" alt="" height="250px" width="250px"></a>
               <div class="card-body">
                   <a href="{{route('singleproduct',$product->slug)}}"><p class="card-text"><h5>{{$product->title}}</h5></p></a>
                   <p class="card-text"><h5>قیمت محصول:{{$product->price}}</h5></p>
@@ -97,7 +97,9 @@
       </div>
     </div>
     <div class="col-lg-12 bg-light">
-      <a href="{{route('category.show',$category->slug)}}" class="btn moshahede">همه {{$category->name}}</a>
+      <a href="{{route('category.show',$category->slug)}}" class="btn moshahede">همه {{$category->name}}
+      ها
+      </a>
     </div>
   </div> 
   @endforeach
