@@ -15,7 +15,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">نام دسته:</label>
-                                    <input type="text" class="form-control @error('name') is-inalid' @enderror" id="exampleInputEmail1" placeholder="نام دسته را وارد نمایید" name="name">
+                                    <input type="text" class="form-control @error('name') is-invalid' @enderror" id="exampleInputEmail1" placeholder="نام دسته را وارد نمایید" name="name">
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
